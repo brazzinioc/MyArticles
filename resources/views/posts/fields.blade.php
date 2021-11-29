@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="titulo">Título *</label>
+    <label for="titulo">Título <span>*</span> </label>
     <input type="text" name="titulo" id="titulo" class="form-control" required value="{{ old('titulo', $post->title) }}">
 </div>
 
@@ -16,7 +16,7 @@
 </div>
 
 <div class="form-group">
-    <label for="contenido">Contenido *</label>
+    <label for="contenido">Contenido <span>*</span></label>
     <textarea name="contenido" id="contenido" rows="6" class="form-control" required>{{ old('contenido', $post->body) }}</textarea>
 </div>
 

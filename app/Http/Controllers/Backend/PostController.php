@@ -54,7 +54,7 @@ class PostController extends Controller
         }
 
         //return response
-        return back()->with('status', 'Creado con éxito');
+        return redirect( route('posts.create') )->with('status', 'Creado con éxito');
     }
 
     /**
@@ -77,6 +77,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $post = Post::findOrFail($post->id);
         return view('posts.edit', compact('post'));
     }
 
@@ -107,7 +108,7 @@ class PostController extends Controller
             $post->save();
         }
 
-        return back()->with('status', 'Actualizado con éxito');
+        return redirect( route('posts.edit', $post->id) )->with('status', 'Actualizado con éxito');
     }
 
     /**
@@ -121,6 +122,6 @@ class PostController extends Controller
         Storage::disk('public')->delete($post->image);
         $post->delete();
 
-        return back()->with('status', 'Eliminado con éxito');
+        return redirect( route('posts.index') )->with('status', 'Eliminado con éxito');
     }
 }

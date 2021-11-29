@@ -16,7 +16,7 @@ class PageController extends Controller
 
     public function post($slug)
     {
-        $post = Post::where('slug', $slug)->get()->first();
+        $post = Post::where('slug', $slug)->firstOrFail();
 
         return view('post', compact('post') );
     }
